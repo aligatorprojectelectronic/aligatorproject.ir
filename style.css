@@ -1870,15 +1870,19 @@ html[data-theme="dark"] .icon-moon {
 
 
   .search-nav {
-    overflow-x: auto;
+    /* بدون اسکرول افقی — تب‌ها ثابت و در صورت نیاز در چند خط */
   }
 
   .nav-inner {
     padding: 0 16px;
 
-    gap: 24px;
+    gap: 4px 22px;
 
-    min-width: max-content;
+    flex-wrap: wrap;
+  }
+
+  .nav-link {
+    height: 44px;
   }
 
 
