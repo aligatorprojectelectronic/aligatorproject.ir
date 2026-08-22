@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const mobileMenuClose = document.getElementById("mobileMenuClose");
 
   const moreInfoButton = document.getElementById("moreInfoButton");
+  const knowledgePanel = document.querySelector(".knowledge-panel");
 
   const themeToggle = document.getElementById("themeToggle");
 
@@ -331,7 +332,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const section = link.dataset.section;
 
+      // ابتدا فیلتر را اعمال می‌کنیم تا سکشن هدف از حالت مخفی خارج شود،
+      // سپس در موبایل و دسکتاپ به همان سکشن اسکرول می‌کنیم.
       setActiveSection(section);
+
+      if (section === "all") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        // یک فریم صبر می‌کنیم تا مرورگر چیدمان جدید را محاسبه کند.
+        requestAnimationFrame(() => scrollToSection(section));
+      }
 
     });
 
@@ -339,6 +349,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   function setActiveSection(section) {
+
+    // پنل معرفی در موبایل فقط در صفحهٔ اصلی و بخش «درباره» نمایش داده شود.
+    // در دسکتاپ این کلاس اثری ندارد و پنل همچنان در ستون کناری باقی می‌ماند.
+    knowledgePanel.classList.toggle(
+      "mobile-hidden",
+      section !== "all" && section !== "about"
+    );
 
     navLinks.forEach(link => {
 
@@ -409,8 +426,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
   mobileMenu.querySelectorAll("a").forEach(link => {
 
-    link.addEventListener("click", () => {
-      closeMobileMenu();
+    link.addEventListener("click", event => {
+      const section = link.getAttribute("href").replace("#", "");
+
+      // لینک‌های منوی موبایل هم باید همان رفتار فیلترهای بالای صفحه را داشته باشند.
+      if (["about", "music", "videos", "events", "gallery"].includes(section)) {
+        event.preventDefault();
+        setActiveSection(section);
+        closeMobileMenu();
+        requestAnimationFrame(() => scrollToSection(section));
+      } else {
+        closeMobileMenu();
+      }
     });
 
   });
