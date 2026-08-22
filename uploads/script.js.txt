@@ -1,0 +1,742 @@
+/* =========================================================
+   ALIGATOR PROJECT
+   Interactive JavaScript
+   ========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  /* =======================================================
+     ELEMENTS
+     ======================================================= */
+
+  const searchInput = document.getElementById("searchInput");
+  const searchButton = document.getElementById("searchButton");
+  const clearSearch = document.getElementById("clearSearch");
+  const searchSuggestions = document.getElementById("searchSuggestions");
+
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  const sections = document.querySelectorAll(
+    ".content-section, .search-result"
+  );
+
+  const menuButton = document.getElementById("menuButton");
+  const mobileMenu = document.getElementById("mobileMenu");
+  const mobileMenuClose = document.getElementById("mobileMenuClose");
+
+  const moreInfoButton = document.getElementById("moreInfoButton");
+
+  const musicPlayer = document.getElementById("musicPlayer");
+  const closePlayer = document.getElementById("closePlayer");
+
+  const mainPlayButton = document.getElementById("mainPlayButton");
+  const previousTrack = document.getElementById("previousTrack");
+  const nextTrack = document.getElementById("nextTrack");
+
+  const playerTitle = document.getElementById("playerTitle");
+  const currentTimeElement = document.getElementById("currentTime");
+  const totalTimeElement = document.getElementById("totalTime");
+  const progressValue = document.getElementById("progressValue");
+
+  const toast = document.getElementById("toast");
+  const toastText = document.getElementById("toastText");
+
+
+  /* =======================================================
+     SEARCH DATA
+     ======================================================= */
+
+  const searchData = [
+    {
+      keyword: "about",
+      title: "About Aligator Project",
+      section: "about"
+    },
+    {
+      keyword: "music",
+      title: "Music — Aligator Project",
+      section: "music"
+    },
+    {
+      keyword: "songs",
+      title: "Music — Aligator Project",
+      section: "music"
+    },
+    {
+      keyword: "tracks",
+      title: "Music — Aligator Project",
+      section: "music"
+    },
+    {
+      keyword: "videos",
+      title: "Videos — Aligator Project",
+      section: "videos"
+    },
+    {
+      keyword: "video",
+      title: "Videos — Aligator Project",
+      section: "videos"
+    },
+    {
+      keyword: "events",
+      title: "Upcoming Events — Aligator Project",
+      section: "events"
+    },
+    {
+      keyword: "gigs",
+      title: "Upcoming Events — Aligator Project",
+      section: "events"
+    },
+    {
+      keyword: "dj",
+      title: "Aligator Project — DJ & Producer",
+      section: "about"
+    },
+    {
+      keyword: "spotify",
+      title: "Aligator Project on Spotify",
+      section: "music"
+    },
+    {
+      keyword: "youtube",
+      title: "Aligator Project on YouTube",
+      section: "videos"
+    },
+    {
+      keyword: "instagram",
+      title: "Aligator Project on Instagram",
+      section: "about"
+    }
+  ];
+
+
+  /* =======================================================
+     SEARCH
+     ======================================================= */
+
+  function normalizeSearch(value) {
+    return value
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, " ");
+  }
+
+
+  function showSuggestions(query) {
+
+    const normalized = normalizeSearch(query);
+
+    if (!normalized) {
+      searchSuggestions.classList.remove("show");
+      searchSuggestions.innerHTML = "";
+      return;
+    }
+
+    const matches = searchData
+      .filter(item => {
+        return (
+          item.keyword.includes(normalized) ||
+          item.title.toLowerCase().includes(normalized)
+        );
+      })
+      .slice(0, 5);
+
+    if (!matches.length) {
+      searchSuggestions.innerHTML = `
+        <div class="suggestion">
+          <span class="suggestion-icon">⌕</span>
+          <span>Search for "${escapeHTML(query)}"</span>
+        </div>
+      `;
+
+      searchSuggestions.classList.add("show");
+
+      return;
+    }
+
+    searchSuggestions.innerHTML = matches
+      .map(item => {
+        return `
+          <div
+            class="suggestion"
+            data-section="${item.section}"
+            data-title="${escapeHTML(item.title)}"
+          >
+            <span class="suggestion-icon">⌕</span>
+            <span>${escapeHTML(item.title)}</span>
+          </div>
+        `;
+      })
+      .join("");
+
+    searchSuggestions.classList.add("show");
+  }
+
+
+  function performSearch(query) {
+
+    const normalized = normalizeSearch(query);
+
+    if (!normalized) {
+      setActiveSection("all");
+      return;
+    }
+
+    const match = searchData.find(item => {
+      return (
+        normalized.includes(item.keyword) ||
+        item.keyword.includes(normalized)
+      );
+    });
+
+    if (match) {
+
+      setActiveSection(match.section);
+
+      scrollToSection(match.section);
+
+      showToast(`Showing ${match.title}`);
+
+    } else {
+
+      setActiveSection("all");
+
+      showToast(
+        `Search results for "${query}" are not available yet.`
+      );
+    }
+
+    searchSuggestions.classList.remove("show");
+  }
+
+
+  searchInput.addEventListener("input", () => {
+
+    if (searchInput.value.length > 0) {
+      clearSearch.classList.add("visible");
+    } else {
+      clearSearch.classList.remove("visible");
+    }
+
+    showSuggestions(searchInput.value);
+  });
+
+
+  searchInput.addEventListener("keydown", event => {
+
+    if (event.key === "Enter") {
+      performSearch(searchInput.value);
+    }
+
+    if (event.key === "Escape") {
+      searchSuggestions.classList.remove("show");
+    }
+  });
+
+
+  searchButton.addEventListener("click", () => {
+    performSearch(searchInput.value);
+  });
+
+
+  clearSearch.addEventListener("click", () => {
+
+    searchInput.value = "";
+
+    clearSearch.classList.remove("visible");
+
+    searchSuggestions.classList.remove("show");
+
+    searchInput.focus();
+
+    setActiveSection("all");
+  });
+
+
+  searchSuggestions.addEventListener("click", event => {
+
+    const suggestion = event.target.closest(".suggestion");
+
+    if (!suggestion) {
+      return;
+    }
+
+    const section = suggestion.dataset.section;
+
+    if (!section) {
+      return;
+    }
+
+    setActiveSection(section);
+
+    scrollToSection(section);
+
+    searchSuggestions.classList.remove("show");
+  });
+
+
+  document.addEventListener("click", event => {
+
+    if (!event.target.closest(".search-wrapper")) {
+      searchSuggestions.classList.remove("show");
+    }
+
+  });
+
+
+  /* =======================================================
+     NAVIGATION FILTERS
+     ======================================================= */
+
+  navLinks.forEach(link => {
+
+    link.addEventListener("click", () => {
+
+      const section = link.dataset.section;
+
+      setActiveSection(section);
+
+      if (section !== "all") {
+        scrollToSection(section);
+      } else {
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+      }
+
+    });
+
+  });
+
+
+  function setActiveSection(section) {
+
+    navLinks.forEach(link => {
+
+      link.classList.toggle(
+        "active",
+        link.dataset.section === section
+      );
+
+    });
+
+
+    if (section === "all") {
+
+      sections.forEach(element => {
+        element.classList.remove("hidden");
+      });
+
+      return;
+    }
+
+
+    sections.forEach(element => {
+
+      const content = element.dataset.content;
+
+      if (content === section) {
+        element.classList.remove("hidden");
+      } else {
+        element.classList.add("hidden");
+      }
+
+    });
+
+  }
+
+
+  function scrollToSection(section) {
+
+    const element = document.getElementById(section);
+
+    if (!element) {
+      return;
+    }
+
+    setTimeout(() => {
+
+      element.classList.add("highlight");
+
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+      });
+
+      setTimeout(() => {
+        element.classList.remove("highlight");
+      }, 1000);
+
+    }, 50);
+  }
+
+
+  /* =======================================================
+     MOBILE MENU
+     ======================================================= */
+
+  menuButton.addEventListener("click", () => {
+
+    mobileMenu.classList.add("open");
+
+    document.body.style.overflow = "hidden";
+
+  });
+
+
+  mobileMenuClose.addEventListener("click", closeMobileMenu);
+
+
+  mobileMenu.querySelectorAll("a").forEach(link => {
+
+    link.addEventListener("click", () => {
+      closeMobileMenu();
+    });
+
+  });
+
+
+  function closeMobileMenu() {
+
+    mobileMenu.classList.remove("open");
+
+    document.body.style.overflow = "";
+
+  }
+
+
+  /* =======================================================
+     MORE ABOUT BUTTON
+     ======================================================= */
+
+  moreInfoButton.addEventListener("click", () => {
+
+    setActiveSection("about");
+
+    scrollToSection("about");
+
+  });
+
+
+  /* =======================================================
+     MUSIC PLAYER
+     ======================================================= */
+
+  const tracks = [
+    {
+      title: "After Midnight",
+      duration: "4:38",
+      seconds: 278
+    },
+    {
+      title: "Dark Water",
+      duration: "5:12",
+      seconds: 312
+    },
+    {
+      title: "Deep Motion",
+      duration: "6:02",
+      seconds: 362
+    },
+    {
+      title: "Neon Dreams",
+      duration: "4:51",
+      seconds: 291
+    }
+  ];
+
+
+  let currentTrackIndex = 0;
+
+  let isPlaying = false;
+
+  let currentSeconds = 0;
+
+  let progressInterval = null;
+
+
+  function openPlayer(index) {
+
+    if (index < 0) {
+      index = tracks.length - 1;
+    }
+
+    if (index >= tracks.length) {
+      index = 0;
+    }
+
+    currentTrackIndex = index;
+
+    currentSeconds = 0;
+
+    const track = tracks[currentTrackIndex];
+
+    playerTitle.textContent = track.title;
+
+    totalTimeElement.textContent = track.duration;
+
+    currentTimeElement.textContent = "0:00";
+
+    progressValue.style.width = "0%";
+
+    musicPlayer.classList.add("visible");
+
+    startPlaying();
+
+  }
+
+
+  function startPlaying() {
+
+    isPlaying = true;
+
+    mainPlayButton.textContent = "Ⅱ";
+
+    clearInterval(progressInterval);
+
+    progressInterval = setInterval(() => {
+
+      currentSeconds++;
+
+      const track = tracks[currentTrackIndex];
+
+      const percentage =
+        (currentSeconds / track.seconds) * 100;
+
+      progressValue.style.width =
+        `${Math.min(percentage, 100)}%`;
+
+      currentTimeElement.textContent =
+        formatTime(currentSeconds);
+
+      if (currentSeconds >= track.seconds) {
+        nextTrack.click();
+      }
+
+    }, 1000);
+
+  }
+
+
+  function pausePlaying() {
+
+    isPlaying = false;
+
+    mainPlayButton.textContent = "▶";
+
+    clearInterval(progressInterval);
+
+  }
+
+
+  mainPlayButton.addEventListener("click", () => {
+
+    if (isPlaying) {
+      pausePlaying();
+    } else {
+      startPlaying();
+    }
+
+  });
+
+
+  previousTrack.addEventListener("click", () => {
+
+    openPlayer(currentTrackIndex - 1);
+
+  });
+
+
+  nextTrack.addEventListener("click", () => {
+
+    openPlayer(currentTrackIndex + 1);
+
+  });
+
+
+  closePlayer.addEventListener("click", () => {
+
+    pausePlaying();
+
+    musicPlayer.classList.remove("visible");
+
+  });
+
+
+  document.querySelectorAll(".track").forEach((trackElement, index) => {
+
+    const playButton =
+      trackElement.querySelector(".play-track");
+
+    playButton.addEventListener("click", () => {
+
+      document.querySelectorAll(".track").forEach(item => {
+        item.classList.remove("playing");
+      });
+
+      trackElement.classList.add("playing");
+
+      openPlayer(index);
+
+    });
+
+  });
+
+
+  /* =======================================================
+     VIDEO BUTTONS
+     ======================================================= */
+
+  document.querySelectorAll(".video-play").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      showToast("Video player will be connected here.");
+
+    });
+
+  });
+
+
+  /* =======================================================
+     TICKET BUTTONS
+     ======================================================= */
+
+  document.querySelectorAll(".event-button").forEach(button => {
+
+    button.addEventListener("click", event => {
+
+      event.preventDefault();
+
+      showToast("Ticket link will be added here.");
+
+    });
+
+  });
+
+
+  /* =======================================================
+     SOCIAL LINKS
+     ======================================================= */
+
+  document.querySelectorAll(".social-links a").forEach(link => {
+
+    link.addEventListener("click", event => {
+
+      if (link.getAttribute("href") === "#") {
+
+        event.preventDefault();
+
+        const name =
+          link.textContent.trim();
+
+        showToast(`${name} link will be added here.`);
+
+      }
+
+    });
+
+  });
+
+
+  /* =======================================================
+     TRACK MORE BUTTONS
+     ======================================================= */
+
+  document.querySelectorAll(".track-more").forEach(button => {
+
+    button.addEventListener("click", () => {
+
+      showToast("Track options will be added here.");
+
+    });
+
+  });
+
+
+  /* =======================================================
+     HELPERS
+     ======================================================= */
+
+  function formatTime(seconds) {
+
+    const minutes =
+      Math.floor(seconds / 60);
+
+    const remaining =
+      seconds % 60;
+
+    return `${minutes}:${String(remaining).padStart(2, "0")}`;
+
+  }
+
+
+  function showToast(message) {
+
+    toastText.textContent = message;
+
+    toast.classList.add("show");
+
+    clearTimeout(window.toastTimeout);
+
+    window.toastTimeout = setTimeout(() => {
+
+      toast.classList.remove("show");
+
+    }, 2500);
+
+  }
+
+
+  function escapeHTML(value) {
+
+    return String(value)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+
+  }
+
+
+  /* =======================================================
+     KEYBOARD SHORTCUT
+     ======================================================= */
+
+  document.addEventListener("keydown", event => {
+
+    if (
+      event.key === "/" &&
+      document.activeElement !== searchInput
+    ) {
+
+      event.preventDefault();
+
+      searchInput.focus();
+
+    }
+
+  });
+
+
+  /* =======================================================
+     INITIAL STATE
+     ======================================================= */
+
+  if (searchInput.value.length > 0) {
+    clearSearch.classList.add("visible");
+  }
+
+
+  console.log(
+    "%cAligator Project",
+    "font-size: 20px; font-weight: bold;"
+  );
+
+  console.log(
+    "Website initialized successfully."
+  );
+
+});
