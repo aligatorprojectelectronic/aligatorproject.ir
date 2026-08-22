@@ -19,6 +19,21 @@
 
   <link rel="stylesheet" href="style.css" />
 
+  <!-- تنظیم نمایش لوگوهای واقعی شبکه‌های اجتماعی -->
+  <style>
+    .social-links a .social-symbol {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      background: transparent !important;
+      border: 0 !important;
+    }
+    .social-links a .social-symbol svg { display: block; }
+    .mobile-socials a { display: inline-flex; align-items: center; }
+  </style>
+
   <!-- انتخاب تم پیش از رندر، برای جلوگیری از فلشِ رنگِ اشتباه -->
   <script>
     (function () {
@@ -180,7 +195,7 @@
 
             <div class="info-item">
               <span class="info-label">مستقر در</span>
-              <strong>آلمان</strong>
+              <strong>ایران</strong>
             </div>
 
           </div>
@@ -364,7 +379,7 @@
 
               <div class="event-details">
                 <h3>اجرای زندهٔ آلیگیتور پروجکت</h3>
-                <p>فرانکفورت، آلمان</p>
+                <p>تهران، ایران</p>
                 <span>۲۲:۰۰ تا ۰۴:۰۰</span>
               </div>
 
@@ -380,7 +395,7 @@
 
               <div class="event-details">
                 <h3>حرکت شب</h3>
-                <p>برلین، آلمان</p>
+                <p>مشهد، ایران</p>
                 <span>۲۳:۰۰ تا ۰۵:۰۰</span>
               </div>
 
@@ -396,7 +411,7 @@
 
               <div class="event-details">
                 <h3>شب عمیق الکترونیک</h3>
-                <p>کلن، آلمان</p>
+                <p>اصفهان، ایران</p>
                 <span>۲۱:۰۰ تا ۰۴:۰۰</span>
               </div>
 
@@ -520,22 +535,64 @@
           <div class="social-links">
 
             <a href="#" aria-label="اینستاگرام">
-              <span class="social-symbol">◎</span>
+              <span class="social-symbol">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                  <defs>
+                    <radialGradient id="ig-grad" cx="30%" cy="107%" r="150%">
+                      <stop offset="0%" stop-color="#fdf497"/>
+                      <stop offset="5%" stop-color="#fdf497"/>
+                      <stop offset="45%" stop-color="#fd5949"/>
+                      <stop offset="60%" stop-color="#d6249f"/>
+                      <stop offset="90%" stop-color="#285AEB"/>
+                    </radialGradient>
+                  </defs>
+                  <rect x="1" y="1" width="22" height="22" rx="6" fill="url(#ig-grad)"/>
+                  <circle cx="12" cy="12" r="4.2" fill="none" stroke="#fff" stroke-width="1.8"/>
+                  <circle cx="17.2" cy="6.8" r="1.3" fill="#fff"/>
+                </svg>
+              </span>
               اینستاگرام
             </a>
 
             <a href="#" aria-label="اسپاتیفای">
-              <span class="social-symbol">◉</span>
+              <span class="social-symbol">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                  <circle cx="12" cy="12" r="11" fill="#1ED760"/>
+                  <path fill="none" stroke="#000" stroke-width="1.7" stroke-linecap="round"
+                    d="M6.4 8.6c3.9-1.1 8.4-.7 11.6 1.2"/>
+                  <path fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round"
+                    d="M7 12.1c3.1-.9 6.8-.5 9.4 1"/>
+                  <path fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round"
+                    d="M7.6 15.3c2.4-.7 5.3-.4 7.4.8"/>
+                </svg>
+              </span>
               اسپاتیفای
             </a>
 
             <a href="#" aria-label="ساندکلود">
-              <span class="social-symbol">◖</span>
+              <span class="social-symbol">
+                <svg viewBox="0 0 48 24" width="26" height="20" aria-hidden="true">
+                  <g fill="#FF5500">
+                    <rect x="2"  y="12" width="1.8" height="8" rx="0.9"/>
+                    <rect x="5"  y="9"  width="1.8" height="11" rx="0.9"/>
+                    <rect x="8"  y="7"  width="1.8" height="13" rx="0.9"/>
+                    <rect x="11" y="10" width="1.8" height="10" rx="0.9"/>
+                    <rect x="14" y="6"  width="1.8" height="14" rx="0.9"/>
+                    <rect x="17" y="8"  width="1.8" height="12" rx="0.9"/>
+                  </g>
+                  <path fill="#FF5500" d="M21 20V8.5c1-.6 2.2-1 3.4-1 3.6 0 6.6 2.7 7.1 6.2.7-.3 1.5-.5 2.3-.5 3 0 5.5 2.4 5.5 5.4 0 .5-.1 1-.2 1.4H21z"/>
+                </svg>
+              </span>
               ساندکلود
             </a>
 
             <a href="#" aria-label="یوتیوب">
-              <span class="social-symbol">▶</span>
+              <span class="social-symbol">
+                <svg viewBox="0 0 24 24" width="22" height="20" aria-hidden="true">
+                  <rect x="1" y="4.5" width="22" height="15" rx="4.2" fill="#FF0000"/>
+                  <path d="M10 8.5l6 3.5-6 3.5z" fill="#fff"/>
+                </svg>
+              </span>
               یوتیوب
             </a>
 
@@ -562,7 +619,7 @@
 
           <div class="knowledge-row">
             <span>موقعیت</span>
-            <strong>آلمان</strong>
+            <strong>ایران</strong>
           </div>
 
 
@@ -606,9 +663,33 @@
       <a href="#gallery">گالری</a>
 
       <div class="mobile-socials">
-        <a href="#">اینستاگرام</a>
-        <a href="#">اسپاتیفای</a>
-        <a href="#">یوتیوب</a>
+        <a href="#">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style="vertical-align:middle;margin-left:6px">
+            <defs>
+              <radialGradient id="ig-grad-m" cx="30%" cy="107%" r="150%">
+                <stop offset="0%" stop-color="#fdf497"/>
+                <stop offset="5%" stop-color="#fdf497"/>
+                <stop offset="45%" stop-color="#fd5949"/>
+                <stop offset="60%" stop-color="#d6249f"/>
+                <stop offset="90%" stop-color="#285AEB"/>
+              </radialGradient>
+            </defs>
+            <rect x="1" y="1" width="22" height="22" rx="6" fill="url(#ig-grad-m)"/>
+            <circle cx="12" cy="12" r="4.2" fill="none" stroke="#fff" stroke-width="1.8"/>
+            <circle cx="17.2" cy="6.8" r="1.3" fill="#fff"/>
+          </svg>اینستاگرام</a>
+        <a href="#">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style="vertical-align:middle;margin-left:6px">
+            <circle cx="12" cy="12" r="11" fill="#1ED760"/>
+            <path fill="none" stroke="#000" stroke-width="1.7" stroke-linecap="round" d="M6.4 8.6c3.9-1.1 8.4-.7 11.6 1.2"/>
+            <path fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round" d="M7 12.1c3.1-.9 6.8-.5 9.4 1"/>
+            <path fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round" d="M7.6 15.3c2.4-.7 5.3-.4 7.4.8"/>
+          </svg>اسپاتیفای</a>
+        <a href="#">
+          <svg viewBox="0 0 24 24" width="20" height="18" aria-hidden="true" style="vertical-align:middle;margin-left:6px">
+            <rect x="1" y="4.5" width="22" height="15" rx="4.2" fill="#FF0000"/>
+            <path d="M10 8.5l6 3.5-6 3.5z" fill="#fff"/>
+          </svg>یوتیوب</a>
       </div>
 
     </div>
