@@ -686,8 +686,9 @@ html[data-theme="dark"] .icon-moon {
 
   margin-top: 30px;
 
-  border-top: 1px solid var(--border-light);
-  border-inline-start: 1px solid var(--border-light);
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .info-item {
@@ -1893,10 +1894,19 @@ html[data-theme="dark"] .icon-moon {
   .results-layout {
     display: flex;
     flex-direction: column;
+    /* چون در دسکتاپ align-items: start است، بدون این خط
+       ستون اصلی در موبایل فقط به اندازهٔ محتوایش عرض می‌گیرد. */
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .results-column {
+    width: 100%;
   }
 
   .knowledge-panel {
     order: -1;
+    width: 100%;
 
     position: static;
 
@@ -1931,19 +1941,26 @@ html[data-theme="dark"] .icon-moon {
 
 
   .track {
+    /* در موبایل هم مدت‌زمان و منوی سه‌نقطه حفظ می‌شوند. */
     grid-template-columns:
       38px
       25px
       minmax(0, 1fr)
-      30px;
+      48px
+      28px;
+    column-gap: 2px;
   }
 
   .track-duration {
-    display: none;
+    display: block;
+    font-size: 10px;
+    white-space: nowrap;
   }
 
   .track-more {
-    display: none;
+    display: block;
+    padding: 0;
+    font-size: 12px;
   }
 
 
@@ -1960,15 +1977,16 @@ html[data-theme="dark"] .icon-moon {
 
 
   .event {
-    grid-template-columns: 58px minmax(0, 1fr);
+    /* دکمهٔ بلیت در همان ردیف تاریخ و جزئیات قرار می‌گیرد. */
+    grid-template-columns: 58px minmax(0, 1fr) auto;
 
     gap: 13px;
   }
 
   .event-button {
-    grid-column: 2;
-
+    grid-column: auto;
     width: fit-content;
+    white-space: nowrap;
   }
 
 
@@ -2072,4 +2090,11 @@ html[data-theme="dark"] .icon-moon {
     grid-template-columns: 1fr;
   }
 
+}
+
+/* پنل معرفی در موبایل فقط برای صفحهٔ اصلی و بخش «درباره» نمایش داده می‌شود. */
+@media (max-width: 760px) {
+  .knowledge-panel.mobile-hidden {
+    display: none;
+  }
 }
