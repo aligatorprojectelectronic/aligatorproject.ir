@@ -1887,13 +1887,17 @@ html[data-theme="dark"] .icon-moon {
   }
 
   .results-layout {
-    display: block;
+    display: flex;
+    flex-direction: column;
   }
 
   .knowledge-panel {
+    order: -1;
+
     position: static;
 
-    margin-top: 25px;
+    margin-top: 0;
+    margin-bottom: 25px;
   }
 
 
