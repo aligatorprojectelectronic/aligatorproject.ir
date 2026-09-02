@@ -2098,3 +2098,617 @@ html[data-theme="dark"] .icon-moon {
     display: none;
   }
 }
+
+/* بازطراحی کارت معرفی هنرمند، با چیدمان فشرده و تصویری در موبایل */
+.knowledge-top {
+  padding: 18px 20px 14px;
+}
+
+.knowledge-title-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.knowledge-title-row h2 {
+  margin: 0;
+  font-size: 21px;
+  line-height: 1.35;
+}
+
+.knowledge-title-row .artist-type {
+  margin: 2px 0 0;
+}
+
+.knowledge-share {
+  width: 28px;
+  height: 28px;
+  flex: none;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--surface-soft);
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.knowledge-share:hover {
+  color: var(--text);
+  background: var(--surface-hover);
+}
+
+.artist-image {
+  height: 260px;
+}
+
+.artist-collage {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1.35fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 2px;
+  background: var(--surface);
+}
+
+.artist-collage img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.artist-collage img:first-child {
+  grid-row: 1 / 3;
+}
+
+@media (max-width: 760px) {
+  .knowledge-top {
+    padding: 10px 9px 7px;
+  }
+
+  .knowledge-title-row h2 {
+    font-size: 16px;
+  }
+
+  .knowledge-title-row .artist-type {
+    font-size: 10px;
+  }
+
+  .knowledge-share {
+    width: 22px;
+    height: 22px;
+    font-size: 13px;
+  }
+
+  .artist-image {
+    height: 192px;
+  }
+
+  .knowledge-content {
+    padding: 12px 9px 14px;
+  }
+
+  .social-links a {
+    padding: 6px 7px;
+  }
+}
+
+/* کلاژ افقی کارت معرفی: قابل کشیدن با انگشت یا ماوس */
+.artist-collage {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 3px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  direction: ltr;
+  cursor: grab;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  touch-action: pan-x;
+}
+
+.artist-collage::-webkit-scrollbar {
+  display: none;
+}
+
+.artist-collage.is-dragging {
+  cursor: grabbing;
+  scroll-behavior: auto;
+}
+
+.artist-collage img,
+.artist-collage img:first-child {
+  flex: 0 0 42%;
+  width: 42%;
+  height: 100%;
+  min-width: 0;
+  object-fit: cover;
+  scroll-snap-align: start;
+}
+
+/* اطلاعات به‌صورت بلوک‌های مستقل */
+.knowledge-data-label {
+  margin-bottom: 8px;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.knowledge-content .knowledge-row {
+  margin: 6px 0;
+  padding: 9px 11px;
+  grid-template-columns: 80px 1fr;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  background: var(--surface-soft);
+}
+
+.lightbox.standalone .lightbox-nav {
+  display: none;
+}
+
+@media (max-width: 760px) {
+  .artist-collage img,
+  .artist-collage img:first-child {
+    flex-basis: 73%;
+    width: 73%;
+  }
+
+  .knowledge-content .knowledge-row {
+    margin: 5px 0;
+    padding: 8px 9px;
+  }
+}
+
+/* فعال‌سازی درگ واقعی برای کلاژ تصاویر */
+.artist-collage {
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+  scroll-behavior: smooth;
+}
+
+.artist-collage img {
+  pointer-events: auto;
+  user-drag: none;
+  -webkit-user-drag: none;
+}
+
+
+/* کاروسل واقعی تصاویر: پنج تصویر با اسکرول افقی native در موبایل */
+.artist-image {
+  min-width: 0;
+}
+
+.artist-collage {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  cursor: grab;
+}
+
+.artist-collage:active,
+.artist-collage.is-dragging {
+  cursor: grabbing;
+}
+
+.artist-collage img,
+.artist-collage img:first-child {
+  display: block;
+  flex: 0 0 42%;
+  width: 42%;
+  min-width: 42%;
+  height: 100%;
+  object-fit: cover;
+  scroll-snap-align: start;
+}
+
+@media (max-width: 760px) {
+  .artist-collage img,
+  .artist-collage img:first-child {
+    flex-basis: 78%;
+    width: 78%;
+    min-width: 78%;
+  }
+}
+
+
+/* سوایپ لمسی مستقیم روی کاروسل تصاویر */
+.artist-collage {
+  overflow-x: scroll !important;
+  overscroll-behavior-x: contain;
+  touch-action: pan-x;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* نوار اسکرول قابل مشاهده و عرض ثابت برای اطمینان از ایجاد کاروسل */
+.artist-collage {
+  overflow-x: scroll !important;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #8b8f99 #292c33;
+}
+
+.artist-collage::-webkit-scrollbar {
+  display: block !important;
+  height: 8px;
+}
+
+.artist-collage::-webkit-scrollbar-track {
+  background: #292c33;
+  border-radius: 10px;
+}
+
+.artist-collage::-webkit-scrollbar-thumb {
+  background: #8b8f99;
+  border-radius: 10px;
+}
+
+.artist-collage img,
+.artist-collage img:first-child {
+  flex: 0 0 220px !important;
+  width: 220px !important;
+  min-width: 220px !important;
+}
+
+@media (max-width: 760px) {
+  .artist-collage img,
+  .artist-collage img:first-child {
+    flex: 0 0 180px !important;
+    width: 180px !important;
+    min-width: 180px !important;
+  }
+}
+
+/* حرکت نرم‌تر کاروسل هنگام جابه‌جایی */
+.artist-collage {
+  scroll-behavior: smooth;
+  scroll-snap-type: x proximity;
+  overscroll-behavior-inline: contain;
+}
+
+.artist-collage.is-dragging,
+.artist-collage:active {
+  scroll-behavior: auto;
+  scroll-snap-type: none;
+}
+
+/* پنهان‌کردن نوار اسکرول، بدون حذف قابلیت سوایپ و درگ */
+.artist-collage {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.artist-collage::-webkit-scrollbar {
+  display: none !important;
+  width: 0;
+  height: 0;
+}
+
+/* تصویر اول بزرگ‌تر و تصاویر بعدی کوچک‌تر، مشابه کارت مرجع */
+.artist-collage img:first-child {
+  flex: 0 0 52% !important;
+  width: 52% !important;
+  min-width: 52% !important;
+}
+
+.artist-collage img:not(:first-child) {
+  flex: 0 0 24% !important;
+  width: 24% !important;
+  min-width: 24% !important;
+}
+
+@media (max-width: 760px) {
+  .artist-collage img:first-child {
+    flex-basis: 52% !important;
+    width: 52% !important;
+    min-width: 52% !important;
+  }
+
+  .artist-collage img:not(:first-child) {
+    flex-basis: 25% !important;
+    width: 25% !important;
+    min-width: 25% !important;
+  }
+}
+
+/* تغییر جهت کاروسل به راست‌به‌چپ؛ تصویر اصلی از سمت راست شروع می‌شود */
+.artist-collage {
+  direction: rtl;
+}
+
+.artist-collage img {
+  scroll-snap-align: end;
+}
+
+/* ارتفاع کاروسل متناسب با تصویر اول؛ تصویر اول مربع می‌ماند */
+@media (max-width: 760px) {
+  .artist-image {
+    height: auto;
+    aspect-ratio: 1.923 / 1;
+  }
+}
+
+
+/* چیدمان اطلاعات هنرمند به‌صورت ۲ در ۲ */
+.knowledge-data-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.knowledge-data-grid .knowledge-row {
+  margin: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  padding: 8px 9px;
+}
+
+.knowledge-data-grid .knowledge-row strong {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* کاهش ارتفاع تصاویر کارت معرفی در موبایل */
+@media (max-width: 760px) {
+  .artist-image {
+    height: clamp(135px, 42vw, 180px);
+    aspect-ratio: auto;
+  }
+}
+
+/* تصویر اول مربع، با ارتفاع کلی کمتر و متناسب با عرض کارت */
+@media (max-width: 760px) {
+  .artist-image {
+    height: auto;
+    aspect-ratio: 1.923 / 1;
+  }
+}
+
+/* کاهش ارتفاع تصاویر کلاژ؛ تصویر اصلی همچنان مربعی باقی می‌ماند */
+.artist-collage img,
+.artist-collage img:first-child {
+  height: 85% !important;
+  align-self: center;
+}
+
+.artist-collage img:first-child {
+  height: auto !important;
+  aspect-ratio: 1 / 1;
+}
+
+/* کاهش یکسان ارتفاع تمام تصاویر ردیف */
+.artist-collage img,
+.artist-collage img:first-child {
+  height: 85% !important;
+  aspect-ratio: auto !important;
+  align-self: center;
+}
+
+/* ترتیب شبکه‌های اجتماعی: اینستاگرام، یوتیوب / ایمیل، تلگرام / اسپاتیفای، ساندکلود */
+.social-links a[aria-label="اینستاگرام"] { order: 1; }
+.social-links a[aria-label="یوتیوب"] { order: 2; }
+.social-links a[aria-label="ایمیل"] { order: 3; }
+.social-links a[aria-label="تلگرام"] { order: 4; }
+.social-links a[aria-label="اسپاتیفای"] { order: 5; }
+.social-links a[aria-label="ساندکلود"] { order: 6; }
+
+.social-symbol-text {
+  font-size: 17px;
+  line-height: 1;
+  color: var(--text-secondary);
+}
+
+.gmail-logo-image {
+  width: 21px !important;
+  height: 20px !important;
+  display: block !important;
+  object-fit: contain;
+}
+
+/* گوشه‌های گرد تصاویر سکشن معرفی */
+.artist-collage img,
+.artist-collage img:first-child {
+  border-radius: 9px;
+}
+
+
+/* ================= پخش‌کنندهٔ ویدیو ================= */
+
+.video-thumbnail {
+  cursor: pointer;
+  background: #0b0b0b;
+}
+
+.video-preview {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  pointer-events: none;
+}
+
+.video-thumbnail::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.55));
+
+  pointer-events: none;
+}
+
+.video-thumbnail .video-play,
+.video-thumbnail .video-duration {
+  position: relative;
+  z-index: 2;
+}
+
+.video-modal {
+  position: fixed;
+  inset: 0;
+
+  z-index: 9999;
+
+  display: none;
+  place-items: center;
+
+  padding: 24px;
+
+  background: rgba(0, 0, 0, .88);
+}
+
+.video-modal.open {
+  display: grid;
+}
+
+.video-modal-inner {
+  width: min(960px, 100%);
+}
+
+.video-modal-inner video {
+  width: 100%;
+
+  max-height: 78vh;
+
+  border-radius: 12px;
+
+  background: #000;
+
+  display: block;
+}
+
+.video-modal-title {
+  margin: 12px 0 0;
+
+  text-align: center;
+
+  color: #fff;
+
+  font-size: 1rem;
+}
+
+.video-modal-close {
+  position: absolute;
+  top: 18px;
+  inset-inline-end: 18px;
+
+  width: 42px;
+  height: 42px;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, .14);
+  color: #fff;
+
+  font-size: 1.6rem;
+  line-height: 1;
+
+  cursor: pointer;
+}
+
+.video-modal-close:hover {
+  background: rgba(255, 255, 255, .26);
+}
+
+.track.playing .track-number {
+  opacity: .35;
+}
+
+
+/* ================= آیکون‌های پخش / توقف ================= */
+
+.play-track,
+.video-play,
+.player-controls button,
+.player-controls .player-main {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  line-height: 0;
+}
+
+.play-track .play-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+.play-track svg,
+.video-play svg,
+.player-controls button svg {
+  fill: currentColor;
+}
+
+.play-track svg {
+  width: 12px;
+  height: 12px;
+}
+
+.video-play svg {
+  width: 18px;
+  height: 18px;
+}
+
+.player-controls button svg {
+  width: 15px;
+  height: 15px;
+}
+
+.player-controls .player-main svg {
+  width: 15px;
+  height: 15px;
+}
+
+/* حالت پیش‌فرض: فقط play دیده می‌شود و pause پنهان است */
+.play-track .icon-play,
+.play-track .icon-pause,
+#mainPlayButton .icon-play,
+#mainPlayButton .icon-pause {
+  display: none;
+}
+
+/* آهنگ متوقف → فقط مثلث play */
+.play-track .icon-play,
+#mainPlayButton .icon-play {
+  display: block;
+}
+
+/* آهنگ در حال پخش → فقط آیکون pause */
+.track.is-playing-row .play-track .icon-play,
+#mainPlayButton.is-playing .icon-play {
+  display: none;
+}
+
+.track.is-playing-row .play-track .icon-pause,
+#mainPlayButton.is-playing .icon-pause {
+  display: block;
+}
+
+/* حذف جبران‌های دستی قدیمی که آیکون را از مرکز خارج می‌کرد */
+.video-play {
+  padding-inline-start: 0;
+}
