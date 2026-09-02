@@ -1582,6 +1582,10 @@ html[data-theme="dark"] .icon-moon {
 }
 
 .player-controls {
+  /* کنترل‌های رسانه باید مستقل از راست‌به‌چپ بودن صفحه باشند:
+     قبلی در چپ، پخش در وسط و بعدی در راست نمایش داده می‌شود. */
+  direction: ltr;
+
   display: flex;
 
   align-items: center;

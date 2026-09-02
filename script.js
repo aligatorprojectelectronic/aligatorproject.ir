@@ -493,6 +493,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const audioElement = document.getElementById("audioElement");
 
+  // تکرار خودکار یک ترک غیرفعال است.
+  audioElement.loop = false;
+
   const tracks = [
     { title: "Bang That Drum", src: "audio/bang-that-drum.mp3" },
     { title: "بشکن (Snap Your Dirty Fingaz)", src: "audio/beshkan.mp3" },
@@ -657,7 +660,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   audioElement.addEventListener("ended", () => {
 
-    openPlayer(currentTrackIndex + 1);
+    // با پایان هر آهنگ، پخش متوقف می‌شود؛ رفتن به آهنگ بعدی فقط دستی است.
+    isPlaying = false;
+    mainPlayButton.classList.remove("is-playing");
+    markPlayingRow();
+    progressValue.style.width = "100%";
+    currentTimeElement.textContent = totalTimeElement.textContent;
 
   });
 
