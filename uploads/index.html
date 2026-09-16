@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>علیگیتور پروجکت — دیجی و تهیه‌کننده</title>
+  <meta
+    name="description"
+    content="علیگیتور پروجکت — دیجی، تهیه‌کننده و هنرمند موسیقی الکترونیک."
+  />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- تنظیم نمایش لوگوهای واقعی شبکه‌های اجتماعی -->
+  <style>
+    .social-links a .social-symbol {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      background: transparent !important;
+      border: 0 !important;
+    }
+    .social-links a .social-symbol svg { display: block; }
+    .mobile-socials a { display: inline-flex; align-items: center; }
+  </style>
+
+  <!-- انتخاب تم پیش از رندر، برای جلوگیری از فلشِ رنگِ اشتباه -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("aligator-theme");
+        var theme = saved ||
+          (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "light");
+      }
+    })();
+  </script>
+</head>
+
+<body>
+
+  <!-- ================= هدر ================= -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">ع</span>
+      <span class="brand-name">علیگیتور</span>
+    </div>
+
+    <div class="search-wrapper">
+      <div class="search-box">
+        <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="M16.5 16.5L21 21"></path>
+        </svg>
+
+        <input
+          id="searchInput"
+          type="search"
+          value="علیگیتور پروجکت"
+          autocomplete="off"
+          aria-label="جستجوی علیگیتور پروجکت"
+        />
+
+        <button class="clear-search" id="clearSearch" aria-label="پاک‌کردن جستجو">
+          ×
+        </button>
+
+        <button class="search-button" id="searchButton">
+          جستجو
+        </button>
+      </div>
+
+      <div class="search-suggestions" id="searchSuggestions"></div>
+    </div>
+
+    <div class="topbar-actions">
+      <!-- دکمه تغییر تم روشن/تیره -->
+      <button class="theme-toggle" id="themeToggle" aria-label="تغییر حالت روشن و تاریک">
+        <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+      </button>
+
+      <button class="menu-button" id="menuButton" aria-label="بازکردن منو">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+
+  <!-- ================= ناوبری ================= -->
+  <nav class="search-nav">
+    <div class="nav-inner">
+      <button class="nav-link active" data-section="all">همه</button>
+      <button class="nav-link" data-section="music">موسیقی</button>
+      <button class="nav-link" data-section="videos">ویدیوها</button>
+      <button class="nav-link" data-section="events">رویدادها</button>
+      <button class="nav-link" data-section="gallery">گالری</button>
+      <button class="nav-link" data-section="about">درباره</button>
+    </div>
+  </nav>
+
+
+  <!-- ================= محتوای اصلی ================= -->
+  <main class="page-container">
+
+    <div class="results-layout">
+
+      <!-- ================= ستون اصلی ================= -->
+      <section class="results-column">
+
+        <!-- معرفی هنرمند -->
+        <section class="search-result hero-result" data-content="about">
+
+          <div class="result-url">
+            aligatorproject.com
+          </div>
+
+          <h1>علیگیتور پروجکت</h1>
+
+          <p class="result-description">
+            علیگیتور پروجکت دیجی و تهیه‌کنندهٔ موسیقی الکترونیک است که صداهای
+            پرانرژی میان هاوس، تکنو و موسیقی الکترونیک ملودیک می‌سازد.
+          </p>
+
+          <div class="result-links">
+            <a href="#music">موسیقی</a>
+            <a href="#about">درباره</a>
+            <a href="#events">رویدادها</a>
+            <a href="#gallery">گالری</a>
+          </div>
+
+        </section>
+
+
+        <!-- درباره -->
+        <section class="content-section" id="about" data-content="about">
+
+          <div class="section-heading">
+            <h2>درباره علیگیتور پروجکت</h2>
+          </div>
+
+          <p class="large-text">
+            علیگیتور پروجکت هویت هنری یک دیجی و تهیه‌کننده است که بر موسیقی
+            الکترونیک، فرهنگ کلاب و اجراهای زندهٔ اتمسفریک تمرکز دارد.
+          </p>
+
+          <p>
+            با ترکیب ریتم‌های پرقدرت، ملودی‌های هیپنوتیزم‌کننده و تولید مدرن
+            الکترونیک، علیگیتور پروجکت صدایی می‌سازد که هم برای کلاب‌های صمیمی
+            و هم برای پیست‌های بزرگ طراحی شده است.
+          </p>
+
+          <div class="info-grid">
+
+            <div class="info-item">
+              <span class="info-label">هنرمند</span>
+              <strong>علیگیتور پروجکت</strong>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">حرفه</span>
+              <strong>دیجی و تهیه‌کننده</strong>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">سبک</span>
+              <strong>هاوس / تکنو</strong>
+            </div>
+
+            <div class="info-item">
+              <span class="info-label">مستقر در</span>
+              <strong>ایران</strong>
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- موسیقی -->
+        <section class="content-section" id="music" data-content="music">
+
+          <div class="section-heading section-heading-row">
+            <div>
+              <span class="eyebrow">همین حالا گوش کنید</span>
+              <h2>موسیقی</h2>
+            </div>
+
+            <a href="#" class="view-all">مشاهده همه</a>
+          </div>
+
+
+          <div class="track-list">
+
+            <article class="track" data-track="1" data-src="audio/bang-that-drum.mp3">
+
+              <button class="play-track" aria-label="پخش آهنگ">
+                <span class="play-icon"><svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.53.85l10.2-6.5a1 1 0 0 0 0-1.7L9.53 4.65A1 1 0 0 0 8 5.5z"/></svg><svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="5" width="3.8" height="14" rx="1.2"/><rect x="13.7" y="5" width="3.8" height="14" rx="1.2"/></svg></span>
+              </button>
+
+              <div class="track-number">۰۱</div>
+
+              <div class="track-info">
+                <h3>Bang That Drum</h3>
+                <p>علیگیتور پروجکت · Ft. Copenhagen Drummers</p>
+              </div>
+
+              <div class="track-duration">--:--</div>
+
+              <button class="track-more">•••</button>
+
+            </article>
+
+
+            <article class="track" data-track="2" data-src="audio/beshkan.mp3">
+
+              <button class="play-track" aria-label="پخش آهنگ">
+                <span class="play-icon"><svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.53.85l10.2-6.5a1 1 0 0 0 0-1.7L9.53 4.65A1 1 0 0 0 8 5.5z"/></svg><svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="5" width="3.8" height="14" rx="1.2"/><rect x="13.7" y="5" width="3.8" height="14" rx="1.2"/></svg></span>
+              </button>
+
+              <div class="track-number">۰۲</div>
+
+              <div class="track-info">
+                <h3>Beshkan(Snap Your Dirty Fingaz)</h3>
+                <p>علیگیتور پروجکت · نسخهٔ رسمی</p>
+              </div>
+
+              <div class="track-duration">--:--</div>
+
+              <button class="track-more">•••</button>
+
+            </article>
+
+
+            <article class="track" data-track="3" data-src="audio/drop-the-bass.mp3">
+
+              <button class="play-track" aria-label="پخش آهنگ">
+                <span class="play-icon"><svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.53.85l10.2-6.5a1 1 0 0 0 0-1.7L9.53 4.65A1 1 0 0 0 8 5.5z"/></svg><svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="5" width="3.8" height="14" rx="1.2"/><rect x="13.7" y="5" width="3.8" height="14" rx="1.2"/></svg></span>
+              </button>
+
+              <div class="track-number">۰۳</div>
+
+              <div class="track-info">
+                <h3>Drop The Bass</h3>
+                <p>علیگیتور پروجکت · میکس اصلی</p>
+              </div>
+
+              <div class="track-duration">--:--</div>
+
+              <button class="track-more">•••</button>
+
+            </article>
+
+
+            <article class="track" data-track="4" data-src="audio/follow-me-2020.mp3">
+
+              <button class="play-track" aria-label="پخش آهنگ">
+                <span class="play-icon"><svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.53.85l10.2-6.5a1 1 0 0 0 0-1.7L9.53 4.65A1 1 0 0 0 8 5.5z"/></svg><svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="5" width="3.8" height="14" rx="1.2"/><rect x="13.7" y="5" width="3.8" height="14" rx="1.2"/></svg></span>
+              </button>
+
+              <div class="track-number">۰۴</div>
+
+              <div class="track-info">
+                <h3>Follow Me 2020</h3>
+                <p>علیگیتور پروجکت vs Space Frog</p>
+              </div>
+
+              <div class="track-duration">--:--</div>
+
+              <button class="track-more">•••</button>
+
+            </article>
+
+          </div>
+
+        </section>
+
+
+        <!-- ویدیوها -->
+        <section class="content-section" id="videos" data-content="videos">
+
+          <div class="section-heading section-heading-row">
+            <div>
+              <span class="eyebrow">تماشا</span>
+              <h2>ویدیوها</h2>
+            </div>
+
+            <a href="#" class="view-all">یوتیوب</a>
+          </div>
+
+
+          <div class="video-grid">
+
+            <article class="video-card" data-video="video/put-your-lights-up.mp4" data-title="Put Your Lights Up">
+              <div class="video-thumbnail">
+                <video class="video-preview" src="video/put-your-lights-up.mp4" poster="image/posters/put-your-lights-up.jpg" muted playsinline preload="metadata"></video>
+                <button class="video-play" aria-label="پخش ویدیو"><svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.53.85l10.2-6.5a1 1 0 0 0 0-1.7L9.53 4.65A1 1 0 0 0 8 5.5z"/></svg></button>
+                <span class="video-duration">--:--</span>
+              </div>
+
+              <div class="video-info">
+                <h3>Put Your Lights Up</h3>
+                <p>Aligator & Decaville · موزیک ویدیو</p>
+              </div>
+            </article>
+
+
+            <article class="video-card" data-video="video/calling-you.mp4" data-title="Calling You (Radio Edit)">
+              <div class="video-thumbnail">
+                <video class="video-preview" src="video/calling-you.mp4" poster="image/posters/calling-you.jpg" muted playsinline preload="metadata"></video>
+                <button class="video-play" aria-label="پخش ویدیو"><svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.53.85l10.2-6.5a1 1 0 0 0 0-1.7L9.53 4.65A1 1 0 0 0 8 5.5z"/></svg></button>
+                <span class="video-duration">--:--</span>
+              </div>
+
+              <div class="video-info">
+                <h3>Calling You (Radio Edit)</h3>
+                <p>علیگیتور پروجکت · موزیک ویدیو</p>
+              </div>
+            </article>
+
+
+            <article class="video-card" data-video="video/kiss-my-bass.mp4" data-title="Kiss My Bass">
+              <div class="video-thumbnail">
+                <video class="video-preview" src="video/kiss-my-bass.mp4" poster="image/posters/kiss-my-bass.jpg" muted playsinline preload="metadata"></video>
+                <button class="video-play" aria-label="پخش ویدیو"><svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.53.85l10.2-6.5a1 1 0 0 0 0-1.7L9.53 4.65A1 1 0 0 0 8 5.5z"/></svg></button>
+                <span class="video-duration">--:--</span>
+              </div>
+
+              <div class="video-info">
+                <h3>Kiss My Bass</h3>
+                <p>علیگیتور پروجکت · موزیک ویدیو</p>
+              </div>
+            </article>
+
+
+            <article class="video-card" data-video="video/never-forget.mp4" data-title="Never Forget">
+              <div class="video-thumbnail">
+                <video class="video-preview" src="video/never-forget.mp4" poster="image/posters/never-forget.jpg" muted playsinline preload="metadata"></video>
+                <button class="video-play" aria-label="پخش ویدیو"><svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.53.85l10.2-6.5a1 1 0 0 0 0-1.7L9.53 4.65A1 1 0 0 0 8 5.5z"/></svg></button>
+                <span class="video-duration">--:--</span>
+              </div>
+
+              <div class="video-info">
+                <h3>Never Forget</h3>
+                <p>به همراه بیژن مرتضوی · موزیک ویدیو</p>
+              </div>
+            </article>
+
+          </div>
+
+        </section>
+
+
+        <!-- رویدادها -->
+        <section class="content-section" id="events" data-content="events">
+
+          <div class="section-heading">
+            <span class="eyebrow">اجرای زنده</span>
+            <h2>رویدادهای پیش‌رو</h2>
+          </div>
+
+
+          <div class="event-list">
+
+            <article class="event">
+              <div class="event-date">
+                <span class="event-month">مرداد</span>
+                <strong>۲۹</strong>
+              </div>
+
+              <div class="event-details">
+                <h3>اجرای زندهٔ علیگیتور پروجکت</h3>
+                <p>تهران، ایران</p>
+                <span>۲۲:۰۰ تا ۰۴:۰۰</span>
+              </div>
+
+              <a href="#" class="event-button">بلیت</a>
+            </article>
+
+
+            <article class="event">
+              <div class="event-date">
+                <span class="event-month">شهریور</span>
+                <strong>۱۲</strong>
+              </div>
+
+              <div class="event-details">
+                <h3>حرکت شب</h3>
+                <p>مشهد، ایران</p>
+                <span>۲۳:۰۰ تا ۰۵:۰۰</span>
+              </div>
+
+              <a href="#" class="event-button">بلیت</a>
+            </article>
+
+
+            <article class="event">
+              <div class="event-date">
+                <span class="event-month">مهر</span>
+                <strong>۰۳</strong>
+              </div>
+
+              <div class="event-details">
+                <h3>شب عمیق الکترونیک</h3>
+                <p>اصفهان، ایران</p>
+                <span>۲۱:۰۰ تا ۰۴:۰۰</span>
+              </div>
+
+              <a href="#" class="event-button">بلیت</a>
+            </article>
+
+          </div>
+
+        </section>
+
+
+        <!-- گالری تصاویر -->
+        <section class="content-section" id="gallery" data-content="gallery">
+
+          <div class="section-heading section-heading-row">
+            <div>
+              <span class="eyebrow">تصاویر</span>
+              <h2>گالری</h2>
+            </div>
+
+            <span class="gallery-hint">برای بزرگ‌نمایی روی تصویر بزنید</span>
+          </div>
+
+          <!-- 🔁 جایگزینی تصاویر: عکس‌های داخل پوشهٔ image/ را با عکس‌های
+               واقعی دیجی جایگزین کنید (هم‌نام، هم‌فرمت .jpg). -->
+          <div class="gallery-grid">
+
+            <figure class="gallery-item" data-caption="پشت میکسر در کلاب">
+              <img src="image/gallery-1.jpg" alt="دیجی پشت میکسر در کلاب" loading="lazy" />
+              <figcaption>پشت میکسر در کلاب</figcaption>
+            </figure>
+
+            <figure class="gallery-item" data-caption="جزئیات میکسر و فیدرها">
+              <img src="image/gallery-2.jpg" alt="جزئیات میکسر دیجی" loading="lazy" />
+              <figcaption>جزئیات میکسر و فیدرها</figcaption>
+            </figure>
+
+            <figure class="gallery-item" data-caption="جمعیت در فستیوال شبانه">
+              <img src="image/gallery-3.jpg" alt="جمعیت در فستیوال شبانه" loading="lazy" />
+              <figcaption>جمعیت در فستیوال شبانه</figcaption>
+            </figure>
+
+            <figure class="gallery-item" data-caption="استیج و نورپردازی">
+              <img src="image/gallery-4.jpg" alt="استیج و نورپردازی" loading="lazy" />
+              <figcaption>استیج و نورپردازی</figcaption>
+            </figure>
+
+            <figure class="gallery-item" data-caption="صفحهٔ وینیل">
+              <img src="image/gallery-5.jpg" alt="صفحهٔ وینیل روی گرامافون" loading="lazy" />
+              <figcaption>صفحهٔ وینیل</figcaption>
+            </figure>
+
+            <figure class="gallery-item" data-caption="استودیوی تولید موسیقی">
+              <img src="image/gallery-6.jpg" alt="استودیوی تولید موسیقی" loading="lazy" />
+              <figcaption>استودیوی تولید موسیقی</figcaption>
+            </figure>
+
+          </div>
+
+        </section>
+
+
+        <!-- جستجوهای مرتبط -->
+        <section class="content-section related-section">
+
+          <div class="section-heading">
+            <h2>جستجوهای مرتبط</h2>
+          </div>
+
+          <div class="related-grid">
+
+            <a href="#" class="related-card">
+              <span class="related-icon">♪</span>
+              <span>
+                <strong>موسیقی الکترونیک</strong>
+                <small>سبک</small>
+              </span>
+            </a>
+
+            <a href="#" class="related-card">
+              <span class="related-icon">DJ</span>
+              <span>
+                <strong>دیجی و تهیه‌کننده</strong>
+                <small>هنرمند</small>
+              </span>
+            </a>
+
+            <a href="#" class="related-card">
+              <span class="related-icon">◉</span>
+              <span>
+                <strong>فرهنگ کلاب</strong>
+                <small>موسیقی</small>
+              </span>
+            </a>
+
+          </div>
+
+        </section>
+
+      </section>
+
+
+      <!-- ================= پنل اطلاعات ================= -->
+      <aside class="knowledge-panel">
+
+        <div class="knowledge-top">
+          <div class="knowledge-title-row">
+            <div>
+              <h2>علیگیتور پروجکت</h2>
+              <p class="artist-type">دیجی موسیقی الکترونیک و بازیگر</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="artist-image">
+          <div class="artist-collage">
+            <img src="image/artist.jpg" alt="علیگیتور پروجکت در حال اجرا" />
+            <img src="image/gallery-1.jpg" alt="اجرای زندهٔ علیگیتور پروجکت" />
+            <img src="image/gallery-2.jpg" alt="علیگیتور پروجکت" />
+            <img src="image/gallery-3.jpg" alt="جمعیت در اجرای زنده" />
+            <img src="image/gallery-4.jpg" alt="استیج و نورپردازی" />
+            <img src="image/gallery-5.jpg" alt="صفحهٔ وینیل" />
+          </div>
+        </div>
+
+        <div class="knowledge-content">
+
+          <div class="knowledge-data-label">اطلاعات هنرمند</div>
+
+          <div class="social-links">
+
+            <a href="https://www.instagram.com/aligatorprojectelectronic" aria-label="اینستاگرام">
+              <span class="social-symbol">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                  <defs>
+                    <radialGradient id="ig-grad" cx="30%" cy="107%" r="150%">
+                      <stop offset="0%" stop-color="#fdf497"/>
+                      <stop offset="5%" stop-color="#fdf497"/>
+                      <stop offset="45%" stop-color="#fd5949"/>
+                      <stop offset="60%" stop-color="#d6249f"/>
+                      <stop offset="90%" stop-color="#285AEB"/>
+                    </radialGradient>
+                  </defs>
+                  <rect x="1" y="1" width="22" height="22" rx="6" fill="url(#ig-grad)"/>
+                  <circle cx="12" cy="12" r="4.2" fill="none" stroke="#fff" stroke-width="1.8"/>
+                  <circle cx="17.2" cy="6.8" r="1.3" fill="#fff"/>
+                </svg>
+              </span>
+              اینستاگرام
+            </a>
+
+            <a href="https://open.spotify.com/artist/aligatorprojectelectronic" aria-label="اسپاتیفای">
+              <span class="social-symbol">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                  <circle cx="12" cy="12" r="11" fill="#1ED760"/>
+                  <path fill="none" stroke="#000" stroke-width="1.7" stroke-linecap="round"
+                    d="M6.4 8.6c3.9-1.1 8.4-.7 11.6 1.2"/>
+                  <path fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round"
+                    d="M7 12.1c3.1-.9 6.8-.5 9.4 1"/>
+                  <path fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round"
+                    d="M7.6 15.3c2.4-.7 5.3-.4 7.4.8"/>
+                </svg>
+              </span>
+              اسپاتیفای
+            </a>
+
+            <a href="https://soundcloud.com/aligatorprojectelectronic" aria-label="ساندکلود">
+              <span class="social-symbol">
+                <svg viewBox="0 0 48 24" width="26" height="20" aria-hidden="true">
+                  <g fill="#FF5500">
+                    <rect x="2"  y="12" width="1.8" height="8" rx="0.9"/>
+                    <rect x="5"  y="9"  width="1.8" height="11" rx="0.9"/>
+                    <rect x="8"  y="7"  width="1.8" height="13" rx="0.9"/>
+                    <rect x="11" y="10" width="1.8" height="10" rx="0.9"/>
+                    <rect x="14" y="6"  width="1.8" height="14" rx="0.9"/>
+                    <rect x="17" y="8"  width="1.8" height="12" rx="0.9"/>
+                  </g>
+                  <path fill="#FF5500" d="M21 20V8.5c1-.6 2.2-1 3.4-1 3.6 0 6.6 2.7 7.1 6.2.7-.3 1.5-.5 2.3-.5 3 0 5.5 2.4 5.5 5.4 0 .5-.1 1-.2 1.4H21z"/>
+                </svg>
+              </span>
+              ساندکلود
+            </a>
+
+            <a href="https://www.youtube.com/@aligatorprojectelectronic" aria-label="یوتیوب">
+              <span class="social-symbol">
+                <svg viewBox="0 0 24 24" width="22" height="20" aria-hidden="true">
+                  <rect x="1" y="4.5" width="22" height="15" rx="4.2" fill="#FF0000"/>
+                  <path d="M10 8.5l6 3.5-6 3.5z" fill="#fff"/>
+                </svg>
+              </span>
+              یوتیوب
+            </a>
+
+            <a href="mailto:aligatorprojectelectronic@gmail.com" class="social-email" aria-label="ایمیل">
+              <span class="social-symbol">
+                <img class="gmail-logo-image" src="image/gmail-logo.png" alt="" aria-hidden="true" />
+              </span>
+              ایمیل
+            </a>
+
+            <a href="https://t.me/aligatorprojectelectronic" class="social-telegram" aria-label="تلگرام">
+              <span class="social-symbol">
+                <svg viewBox="0 0 24 24" width="21" height="20" aria-hidden="true">
+                  <circle cx="12" cy="12" r="11" fill="#2AABEE"/>
+                  <path fill="#fff" d="M5 11.55 19 6 15.45 18 11 14l-3 2 .95-3.25z"/>
+                </svg>
+              </span>
+              تلگرام
+            </a>
+
+          </div>
+
+
+          <div class="knowledge-divider"></div>
+
+
+          <div class="knowledge-data-grid">
+            <div class="knowledge-row">
+              <span>سابقه</span>
+              <strong>۲۰ سال</strong>
+            </div>
+
+            <div class="knowledge-row">
+              <span>سبک</span>
+              <strong>الکترونیک</strong>
+            </div>
+
+            <div class="knowledge-row">
+              <span>حرفه</span>
+              <strong>دیجی / بازیگر</strong>
+            </div>
+
+            <div class="knowledge-row">
+              <span>موقعیت</span>
+              <strong>ایران</strong>
+            </div>
+          </div>
+
+
+          <div class="knowledge-divider"></div>
+
+
+          <!-- <p class="knowledge-description">
+            علیگیتور پروجکت هنرمند موسیقی الکترونیک است که بر صداهای معاصر
+            کلاب، اجراهای دیجی و تولیدات اختصاصی تمرکز دارد.
+          </p> -->
+
+
+          <button class="more-info-button" id="moreInfoButton">
+            اطلاعات بیشتر درباره علیگیتور پروجکت
+          </button>
+
+        </div>
+
+      </aside>
+
+    </div>
+
+  </main>
+
+
+  <!-- ================= منوی موبایل ================= -->
+  <div class="mobile-menu" id="mobileMenu">
+
+    <button class="mobile-menu-close" id="mobileMenuClose" aria-label="بستن منو">
+      ×
+    </button>
+
+    <div class="mobile-menu-content">
+
+      <span class="eyebrow">کاوش</span>
+
+      <a href="#about">درباره</a>
+      <a href="#music">موسیقی</a>
+      <a href="#videos">ویدیوها</a>
+      <a href="#events">رویدادها</a>
+      <a href="#gallery">گالری</a>
+
+      <div class="mobile-socials">
+        
+              <a href="https://www.instagram.com/aligatorprojectelectronic" aria-label="اینستاگرام">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style="vertical-align:middle;margin-left:6px">
+                  <defs>
+                    <radialGradient id="ig-grad" cx="30%" cy="107%" r="150%">
+                      <stop offset="0%" stop-color="#fdf497"/>
+                      <stop offset="5%" stop-color="#fdf497"/>
+                      <stop offset="45%" stop-color="#fd5949"/>
+                      <stop offset="60%" stop-color="#d6249f"/>
+                      <stop offset="90%" stop-color="#285AEB"/>
+                    </radialGradient>
+                  </defs>
+                  <rect x="1" y="1" width="22" height="22" rx="6" fill="url(#ig-grad)"/>
+                  <circle cx="12" cy="12" r="4.2" fill="none" stroke="#fff" stroke-width="1.8"/>
+                  <circle cx="17.2" cy="6.8" r="1.3" fill="#fff"/>
+                </svg>
+              اینستاگرام
+            </a>
+
+            <!-- <a href="https://open.spotify.com/artist/aligatorprojectelectronic" aria-label="اسپاتیفای">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style="vertical-align:middle;margin-left:6px">
+                  <circle cx="12" cy="12" r="11" fill="#1ED760"/>
+                  <path fill="none" stroke="#000" stroke-width="1.7" stroke-linecap="round"
+                    d="M6.4 8.6c3.9-1.1 8.4-.7 11.6 1.2"/>
+                  <path fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round"
+                    d="M7 12.1c3.1-.9 6.8-.5 9.4 1"/>
+                  <path fill="none" stroke="#000" stroke-width="1.3" stroke-linecap="round"
+                    d="M7.6 15.3c2.4-.7 5.3-.4 7.4.8"/>
+                </svg>
+              اسپاتیفای
+            </a> -->
+
+            <!-- <a href="https://soundcloud.com/aligatorprojectelectronic" aria-label="ساندکلود">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style="vertical-align:middle;margin-left:6px">
+                  <g fill="#FF5500">
+                    <rect x="2"  y="12" width="1.8" height="8" rx="0.9"/>
+                    <rect x="5"  y="9"  width="1.8" height="11" rx="0.9"/>
+                    <rect x="8"  y="7"  width="1.8" height="13" rx="0.9"/>
+                    <rect x="11" y="10" width="1.8" height="10" rx="0.9"/>
+                    <rect x="14" y="6"  width="1.8" height="14" rx="0.9"/>
+                    <rect x="17" y="8"  width="1.8" height="12" rx="0.9"/>
+                  </g>
+                  <path fill="#FF5500" d="M21 20V8.5c1-.6 2.2-1 3.4-1 3.6 0 6.6 2.7 7.1 6.2.7-.3 1.5-.5 2.3-.5 3 0 5.5 2.4 5.5 5.4 0 .5-.1 1-.2 1.4H21z"/>
+                </svg>
+              ساندکلود
+            </a> -->
+
+            <a href="https://www.youtube.com/@aligatorprojectelectronic" aria-label="یوتیوب">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style="vertical-align:middle;margin-left:6px">
+                  <rect x="1" y="4.5" width="22" height="15" rx="4.2" fill="#FF0000"/>
+                  <path d="M10 8.5l6 3.5-6 3.5z" fill="#fff"/>
+                </svg>
+              یوتیوب
+            </a>
+
+            <a href="mailto:aligatorprojectelectronic@gmail.com" class="social-email" aria-label="ایمیل">
+              <span style="vertical-align:middle;margin-left:6px">
+                <img class="gmail-logo-image" src="image/gmail-logo.png" alt="" aria-hidden="true" />
+              </span>
+              ایمیل
+            </a>
+
+            <a href="https://t.me/aligatorprojectelectronic" class="social-telegram" aria-label="تلگرام">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" style="vertical-align:middle;margin-left:6px">
+                  <circle cx="12" cy="12" r="11" fill="#2AABEE"/>
+                  <path fill="#fff" d="M5 11.55 19 6 15.45 18 11 14l-3 2 .95-3.25z"/>
+                </svg>
+              تلگرام
+            </a>
+
+
+
+
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= لایت‌باکس گالری ================= -->
+  <div
+    class="lightbox"
+    id="lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="نمایش تصویر در اندازهٔ بزرگ"
+    aria-hidden="true"
+  >
+
+    <button class="lightbox-close" id="lightboxClose" aria-label="بستن">×</button>
+
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="تصویر قبلی">›</button>
+
+    <figure class="lightbox-figure">
+      <img id="lightboxImg" src="" alt="" />
+      <figcaption id="lightboxCaption"></figcaption>
+    </figure>
+
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="تصویر بعدی">‹</button>
+
+  </div>
+
+
+  <!-- ================= پخش‌کنندهٔ موسیقی ================= -->
+  <audio id="audioElement" preload="metadata"></audio>
+
+  <div class="music-player" id="musicPlayer">
+
+    <div class="player-track">
+
+      <div class="player-cover">
+        ع
+      </div>
+
+      <div>
+        <strong id="playerTitle">Bang That Drum</strong>
+        <span>علیگیتور پروجکت</span>
+      </div>
+
+    </div>
+
+
+    <div class="player-controls">
+
+      <button id="previousTrack" aria-label="آهنگ قبلی"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 5.5v13a1 1 0 0 1-1.55.83l-9-6.5a1 1 0 0 1 0-1.66l9-6.5A1 1 0 0 1 18 5.5z"/><rect x="4.5" y="5" width="2.6" height="14" rx="1.1"/></svg></button>
+
+      <button class="player-main" id="mainPlayButton" aria-label="پخش / توقف"><svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.53.85l10.2-6.5a1 1 0 0 0 0-1.7L9.53 4.65A1 1 0 0 0 8 5.5z"/></svg><svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="5" width="3.8" height="14" rx="1.2"/><rect x="13.7" y="5" width="3.8" height="14" rx="1.2"/></svg></button>
+
+      <button id="nextTrack" aria-label="آهنگ بعدی"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5.5v13a1 1 0 0 0 1.55.83l9-6.5a1 1 0 0 0 0-1.66l-9-6.5A1 1 0 0 0 6 5.5z"/><rect x="16.9" y="5" width="2.6" height="14" rx="1.1"/></svg></button>
+
+    </div>
+
+
+    <div class="player-progress">
+
+      <span id="currentTime">۰:۰۰</span>
+
+      <div class="progress-bar">
+        <div class="progress-value" id="progressValue"></div>
+      </div>
+
+      <span id="totalTime">۰:۰۰</span>
+
+    </div>
+
+
+    <button class="player-close" id="closePlayer" aria-label="بستن پخش‌کننده">
+      ×
+    </button>
+
+  </div>
+
+
+  <!-- ================= پیام اطلاع‌رسانی ================= -->
+  <div class="toast" id="toast">
+    <span id="toastText">به‌زودی</span>
+  </div>
+
+
+  <!-- ================= پخش‌کنندهٔ ویدیو ================= -->
+  <div class="video-modal" id="videoModal" aria-hidden="true">
+    <button class="video-modal-close" id="videoModalClose" aria-label="بستن">×</button>
+    <div class="video-modal-inner">
+      <video id="videoModalPlayer" controls playsinline></video>
+      <p class="video-modal-title" id="videoModalTitle"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
